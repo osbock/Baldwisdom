@@ -181,7 +181,7 @@ int main(void) {
 
   delay_ten_us(5000);            // Let everything settle for a bit
   // Starting execution loop
-  delay_ten_us(25000);
+  //  delay_ten_us(25000);
   
   // turn on watchdog timer immediately, this protects against
   // a 'stuck' system by resetting it
