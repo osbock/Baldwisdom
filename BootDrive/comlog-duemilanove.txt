@@ -1,0 +1,762 @@
+<20120103205939.498 SYS>
+COM is open
+<20120103205939.613 SYS>
+COM is closed
+<20120103205939.626 SYS>
+COM is open
+<20120103205939.626 SYS>
+In/out queue size 2048/1024
+<20120103205939.627 SYS>
+Baud rate 9600
+<20120103205939.627 SYS>
+RTS off
+<20120103205939.627 SYS>
+DTR on
+<20120103205939.628 SYS>
+Data bits=8, Stop bits=1, Parity=None
+<20120103205939.628 SYS>
+Set chars: Eof=0x04, Error=0x00, Break=0x00, Event=0x0A, Xon=0x00, Xoff=0x00
+<20120103205939.628 SYS>
+Handflow: ControlHandShake=(DTR_CONTROL), FlowReplace=(), XonLimit=0, XoffLimit=0
+<20120103205939.628 SYS>
+Set timeouts: ReadInterval=0, ReadTotalTimeoutMultiplier=0, ReadTotalTimeoutConstant=0, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205939.628 SYS>
+Baud rate 9600
+<20120103205939.629 SYS>
+RTS off
+<20120103205939.629 SYS>
+DTR on
+<20120103205939.629 SYS>
+Data bits=8, Stop bits=1, Parity=None
+<20120103205939.629 SYS>
+Set chars: Eof=0x04, Error=0x00, Break=0x00, Event=0x0A, Xon=0x00, Xoff=0x00
+<20120103205939.629 SYS>
+Handflow: ControlHandShake=(DTR_CONTROL), FlowReplace=(), XonLimit=0, XoffLimit=0
+<20120103205939.629 SYS>
+Set timeouts: ReadInterval=-1, ReadTotalTimeoutMultiplier=0, ReadTotalTimeoutConstant=0, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205939.635 SYS>
+Baud rate 19200
+<20120103205939.635 SYS>
+RTS off
+<20120103205939.635 SYS>
+DTR on
+<20120103205939.635 SYS>
+Data bits=8, Stop bits=1, Parity=None
+<20120103205939.635 SYS>
+Set chars: Eof=0x04, Error=0x00, Break=0x00, Event=0x0A, Xon=0x00, Xoff=0x00
+<20120103205939.636 SYS>
+Handflow: ControlHandShake=(DTR_CONTROL), FlowReplace=(), XonLimit=0, XoffLimit=0
+<20120103205939.636 SYS>
+Set timeouts: ReadInterval=-1, ReadTotalTimeoutMultiplier=0, ReadTotalTimeoutConstant=0, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205939.636 SYS>
+DTR off
+<20120103205939.636 SYS>
+RTS off
+<20120103205939.637 SYS>
+DTR off
+<20120103205939.637 SYS>
+RTS off
+<20120103205939.737 SYS>
+DTR on
+<20120103205939.737 SYS>
+RTS off
+<20120103205939.738 SYS>
+DTR on
+<20120103205939.738 SYS>
+RTS on
+<20120103205939.738 SYS>
+DTR off
+<20120103205939.738 SYS>
+RTS on
+<20120103205939.739 SYS>
+DTR off
+<20120103205939.739 SYS>
+RTS on
+<20120103205939.853 SYS>
+COM is closed
+<20120103205939.947 SYS>
+COM is open
+<20120103205939.947 SYS>
+In/out queue size 1024/1024
+<20120103205939.948 SYS>
+Baud rate 57600
+<20120103205939.948 SYS>
+RTS off
+<20120103205939.948 SYS>
+DTR off
+<20120103205939.948 SYS>
+Data bits=8, Stop bits=1, Parity=None
+<20120103205939.948 SYS>
+Set chars: Eof=0x00, Error=0x00, Break=0x00, Event=0x00, Xon=0x00, Xoff=0x00
+<20120103205939.949 SYS>
+Handflow: ControlHandShake=(), FlowReplace=(), XonLimit=0, XoffLimit=0
+<20120103205939.949 SYS>
+Set timeouts: ReadInterval=0, ReadTotalTimeoutMultiplier=0, ReadTotalTimeoutConstant=0, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205939.949 SYS>
+DTR off
+<20120103205939.949 SYS>
+RTS off
+<20120103205939.999 SYS>
+DTR on
+<20120103205939.999 SYS>
+RTS on
+<20120103205940.049 SYS>
+Set timeouts: ReadInterval=250, ReadTotalTimeoutMultiplier=250, ReadTotalTimeoutConstant=250, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205940.549 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205940.549 TX>
+#30#20
+<20120103205940.549 SYS>
+Set timeouts: ReadInterval=250, ReadTotalTimeoutMultiplier=250, ReadTotalTimeoutConstant=250, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205940.554 RX>
+#14#10
+<20120103205941.054 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.054 TX>
+#30#20
+<20120103205941.054 SYS>
+Set timeouts: ReadInterval=250, ReadTotalTimeoutMultiplier=250, ReadTotalTimeoutConstant=250, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.067 RX>
+#14#10
+<20120103205941.567 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.567 TX>
+#30#20
+<20120103205941.567 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.579 RX>
+#14
+<20120103205941.580 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.580 RX>
+#10
+<20120103205941.580 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.580 TX>
+#41#81#20
+<20120103205941.580 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.595 RX>
+#14
+<20120103205941.595 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.595 RX>
+#01
+<20120103205941.595 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.595 RX>
+#10
+<20120103205941.595 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.596 TX>
+#41#82#20
+<20120103205941.596 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.612 RX>
+#14
+<20120103205941.612 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.612 RX>
+#10
+<20120103205941.612 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.612 RX>
+#10
+<20120103205941.612 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.612 TX>
+#42#86#00#00#01#01#01#01#03#FF#FF#FF#FF#00#80#04#00#00#00#80#00#20
+<20120103205941.612 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.628 RX>
+#14
+<20120103205941.628 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.628 RX>
+#10
+<20120103205941.628 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.628 TX>
+#45#05#04#D7#C2#00#20
+<20120103205941.628 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.644 RX>
+#14
+<20120103205941.644 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.644 RX>
+#10
+<20120103205941.644 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.644 TX>
+#50#20
+<20120103205941.644 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.660 RX>
+#14
+<20120103205941.660 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.660 RX>
+#10
+<20120103205941.660 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.660 TX>
+#75#20
+<20120103205941.660 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.676 RX>
+#14#1E#95#0F#10
+<20120103205941.676 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.676 TX>
+#56#A0#03#FC#00#20
+<20120103205941.676 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.692 RX>
+#14
+<20120103205941.692 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.692 RX>
+#00
+<20120103205941.692 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.692 RX>
+#10
+<20120103205941.692 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.692 TX>
+#56#A0#03#FD#00#20
+<20120103205941.692 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.708 RX>
+#14
+<20120103205941.708 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.708 RX>
+#00
+<20120103205941.708 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.708 RX>
+#10
+<20120103205941.708 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.708 TX>
+#56#A0#03#FE#00#20
+<20120103205941.708 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.724 RX>
+#14
+<20120103205941.724 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.724 RX>
+#00
+<20120103205941.724 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.724 RX>
+#10
+<20120103205941.724 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.724 TX>
+#56#A0#03#FF#00#20
+<20120103205941.724 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.740 RX>
+#14
+<20120103205941.740 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.740 RX>
+#00
+<20120103205941.740 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.740 RX>
+#10
+<20120103205941.740 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.741 TX>
+#55#00#00#20
+<20120103205941.741 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.756 RX>
+#14
+<20120103205941.756 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.756 RX>
+#10
+<20120103205941.756 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.767 TX>
+#64#00#80#46#0C#94#61#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#9A#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#00#00#00#00#24#00#27#00#2A#00#00#00#00#00#25#00#28#00#2B#00#00#00#00#00#20
+<20120103205941.767 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.804 RX>
+#14
+<20120103205941.804 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.804 RX>
+#10
+<20120103205941.804 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.804 TX>
+#55#40#00#20
+<20120103205941.804 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.820 RX>
+#14
+<20120103205941.820 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.820 RX>
+#10
+<20120103205941.820 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.831 TX>
+#64#00#80#46#23#00#26#00#29#00#04#04#04#04#04#04#04#04#02#02#02#02#02#02#03#03#03#03#03#03#01#02#04#08#10#20#40#80#01#02#04#08#10#20#01#02#04#08#10#20#00#00#00#07#00#02#01#00#00#03#04#06#00#00#00#00#00#00#00#00#11#24#1F#BE#CF#EF#D8#E0#DE#BF#CD#BF#11#E0#A0#E0#B1#E0#E2#E0#F4#E0#02#C0#05#90 [len=96]
+<20120103205941.831 TX>
+#92#A0#30#B1#07#D9#F7#11#E0#A0#E0#B1#E0#01#C0#1D#92#A9#30#B1#07#E1#F7#0E#94#F0#01#0C#94#FF#01#0C#94#00#00#20
+<20120103205941.831 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.867 RX>
+#14
+<20120103205941.868 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.868 RX>
+#10
+<20120103205941.868 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.868 TX>
+#55#80#00#20
+<20120103205941.868 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.884 RX>
+#14
+<20120103205941.884 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.884 RX>
+#10
+<20120103205941.884 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.895 TX>
+#64#00#80#46#8D#E0#61#E0#0E#94#9C#01#68#EE#73#E0#80#E0#90#E0#0E#94#E2#00#8D#E0#60#E0#0E#94#9C#01#68#EE#73#E0#80#E0#90#E0#0E#94#E2#00#08#95#8D#E0#61#E0#0E#94#76#01#08#95#1F#92#0F#92#0F#B6#0F#92#11#24#2F#93#3F#93#8F#93#9F#93#AF#93#BF#93#80#91#04#01#90#91#05#01#A0#91#06#01#B0#91#07#01#30#91#08#01#01#96#A1#1D#B1#1D#23#2F#2D#5F#2D#37#20#F0#2D#57#01#96#A1#1D#B1#1D#20#93#08#01#80#93#04#01#90#93#05#01#20
+<20120103205941.895 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.931 RX>
+#14
+<20120103205941.932 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.932 RX>
+#10
+<20120103205941.932 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.932 TX>
+#55#C0#00#20
+<20120103205941.932 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.947 RX>
+#14
+<20120103205941.948 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.948 RX>
+#10
+<20120103205941.948 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.959 TX>
+#64#00#80#46#A0#93#06#01#B0#93#07#01#80#91#00#01#90#91#01#01#A0#91#02#01#B0#91#03#01#01#96#A1#1D#B1#1D#80#93#00#01#90#93#01#01#A0#93#02#01#B0#93#03#01#BF#91#AF#91#9F#91#8F#91#3F#91#2F#91#0F#90#0F#BE#0F#90#1F#90#18#95#9B#01#AC#01#7F#B7#F8#94#80#91#00#01#90#91#01#01#A0#91#02#01#B0#91#03#01#66#B5#A8#9B#05#C0#6F#3F#19#F0#01#96#A1#1D#B1#1D#7F#BF#BA#2F#A9#2F#98#2F#88#27#86#0F#91#1D#A1#1D#B1#1D#62#E0#20
+<20120103205941.959 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.995 RX>
+#14
+<20120103205941.996 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.996 RX>
+#10
+<20120103205941.996 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205941.996 TX>
+#55#00#01#20
+<20120103205941.996 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.011 RX>
+#14
+<20120103205942.011 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.011 RX>
+#10
+<20120103205942.011 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.022 TX>
+#64#00#80#46#88#0F#99#1F#AA#1F#BB#1F#6A#95#D1#F7#BC#01#2D#C0#FF#B7#F8#94#80#91#00#01#90#91#01#01#A0#91#02#01#B0#91#03#01#E6#B5#A8#9B#05#C0#EF#3F#19#F0#01#96#A1#1D#B1#1D#FF#BF#BA#2F#A9#2F#98#2F#88#27#8E#0F#91#1D#A1#1D#B1#1D#E2#E0#88#0F#99#1F#AA#1F#BB#1F#EA#95#D1#F7#86#1B#97#0B#88#5E#93#40#C8#F2#21#50#30#40#40#40#50#40#68#51#7C#4F#21#15#31#05#41#05#51#05#71#F6#08#95#78#94#84#B5#82#60#84#BD#84#B5#20
+<20120103205942.022 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.059 RX>
+#14
+<20120103205942.060 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.060 RX>
+#10
+<20120103205942.060 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.060 TX>
+#55#40#01#20
+<20120103205942.060 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.075 RX>
+#14
+<20120103205942.075 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.075 RX>
+#10
+<20120103205942.075 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.086 TX>
+#64#00#80#46#81#60#84#BD#85#B5#82#60#85#BD#85#B5#81#60#85#BD#EE#E6#F0#E0#80#81#81#60#80#83#E1#E8#F0#E0#10#82#80#81#82#60#80#83#80#81#81#60#80#83#E0#E8#F0#E0#80#81#81#60#80#83#E1#EB#F0#E0#80#81#84#60#80#83#E0#EB#F0#E0#80#81#81#60#80#83#EA#E7#F0#E0#80#81#84#60#80#83#80#81#82#60#80#83#80#81#81#60#80#83#80#81#80#68#80#83#10#92#C1#00#08#95#48#2F#50#E0#CA#01#86#56#9F#4F#FC#01#24#91#4A#57#5F#4F#FA#01#20
+<20120103205942.087 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.123 RX>
+#14
+<20120103205942.124 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.124 RX>
+#10
+<20120103205942.124 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.124 TX>
+#55#80#01#20
+<20120103205942.124 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.139 RX>
+#14
+<20120103205942.139 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.139 RX>
+#10
+<20120103205942.139 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.150 TX>
+#64#00#80#46#84#91#88#23#C1#F0#E8#2F#F0#E0#EE#0F#FF#1F#E8#59#FF#4F#A5#91#B4#91#66#23#41#F4#9F#B7#F8#94#8C#91#20#95#82#23#8C#93#9F#BF#08#95#9F#B7#F8#94#8C#91#82#2B#8C#93#9F#BF#08#95#48#2F#50#E0#CA#01#82#55#9F#4F#FC#01#24#91#CA#01#86#56#9F#4F#FC#01#94#91#4A#57#5F#4F#FA#01#34#91#33#23#09#F4#40#C0#22#23#51#F1#23#30#71#F0#24#30#28#F4#21#30#A1#F0#22#30#11#F5#14#C0#26#30#B1#F0#27#30#C1#F0#24#30#D9#F4#20
+<20120103205942.151 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.187 RX>
+#14
+<20120103205942.187 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.187 RX>
+#10
+<20120103205942.187 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.188 TX>
+#55#C0#01#20
+<20120103205942.188 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.204 RX>
+#14
+<20120103205942.204 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.204 RX>
+#10
+<20120103205942.204 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.215 TX>
+#64#00#80#46#04#C0#80#91#80#00#8F#77#03#C0#80#91#80#00#8F#7D#80#93#80#00#10#C0#84#B5#8F#77#02#C0#84#B5#8F#7D#84#BD#09#C0#80#91#B0#00#8F#77#03#C0#80#91#B0#00#8F#7D#80#93#B0#00#E3#2F#F0#E0#EE#0F#FF#1F#EE#58#FF#4F#A5#91#B4#91#2F#B7#F8#94#66#23#21#F4#8C#91#90#95#89#23#02#C0#8C#91#89#2B#8C#93#2F#BF#08#95#CF#93#DF#93#0E#94#3B#01#0E#94#95#00#C0#E0#D0#E0#0E#94#80#00#20#97#E1#F3#0E#94#00#00#F9#CF#F8#94#20
+<20120103205942.215 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.251 RX>
+#14
+<20120103205942.252 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.252 RX>
+#10
+<20120103205942.252 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.252 TX>
+#55#00#02#20
+<20120103205942.252 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.267 RX>
+#14
+<20120103205942.267 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.267 RX>
+#10
+<20120103205942.267 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.268 TX>
+#64#00#02#46#FF#CF#20
+<20120103205942.268 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.283 RX>
+#14
+<20120103205942.284 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.284 RX>
+#10
+<20120103205942.284 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.285 TX>
+#55#00#00#20
+<20120103205942.285 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.299 RX>
+#14
+<20120103205942.300 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.300 RX>
+#10
+<20120103205942.300 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.300 TX>
+#74#00#80#46#20
+<20120103205942.300 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.338 RX>
+#14
+<20120103205942.338 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.338 RX>
+#0C#94#61#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#9A#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#0C#94#7E#00#00#00#00#00#24#00#27#00#2A#00#00#00#00#00#25#00#28#00#2B#00#00#00#00#00
+<20120103205942.338 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.338 RX>
+#10
+<20120103205942.338 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.338 TX>
+#55#40#00#20
+<20120103205942.338 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.354 RX>
+#14
+<20120103205942.354 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.354 RX>
+#10
+<20120103205942.354 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.354 TX>
+#74#00#80#46#20
+<20120103205942.354 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.392 RX>
+#14
+<20120103205942.392 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.392 RX>
+#23#00#26#00#29#00#04#04#04#04#04#04#04#04#02#02#02#02#02#02#03#03#03#03#03#03#01#02#04#08#10#20#40#80#01#02#04#08#10#20#01#02#04#08#10#20#00#00#00#07#00#02#01#00#00#03#04#06#00#00#00#00#00#00#00#00#11#24#1F#BE#CF#EF#D8#E0#DE#BF#CD#BF#11#E0#A0#E0#B1#E0#E2#E0#F4#E0#02#C0#05#90 [len=92]
+<20120103205942.392 RX>
+#92#A0#30#B1#07#D9#F7#11#E0#A0#E0#B1#E0#01#C0#1D#92#A9#30#B1#07#E1#F7#0E#94#F0#01#0C#94#FF#01#0C#94#00#00
+<20120103205942.392 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.392 RX>
+#10
+<20120103205942.392 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.392 TX>
+#55#80#00#20
+<20120103205942.392 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.407 RX>
+#14
+<20120103205942.408 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.408 RX>
+#10
+<20120103205942.408 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.408 TX>
+#74#00#80#46#20
+<20120103205942.408 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.446 RX>
+#14
+<20120103205942.446 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.446 RX>
+#8D#E0#61#E0#0E#94#9C#01#68#EE#73#E0#80#E0#90#E0#0E#94#E2#00#8D#E0#60#E0#0E#94#9C#01#68#EE#73#E0#80#E0#90#E0#0E#94#E2#00#08#95#8D#E0#61#E0#0E#94#76#01#08#95#1F#92#0F#92#0F#B6#0F#92#11#24#2F#93#3F#93#8F#93#9F#93#AF#93#BF#93#80#91#04#01#90#91#05#01#A0#91#06#01#B0#91#07#01#30#91#08#01#01#96#A1#1D#B1#1D#23#2F#2D#5F#2D#37#20#F0#2D#57#01#96#A1#1D#B1#1D#20#93#08#01#80#93#04#01#90#93#05#01
+<20120103205942.446 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.446 RX>
+#10
+<20120103205942.446 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.446 TX>
+#55#C0#00#20
+<20120103205942.446 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.462 RX>
+#14
+<20120103205942.462 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.462 RX>
+#10
+<20120103205942.462 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.462 TX>
+#74#00#80#46#20
+<20120103205942.462 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.500 RX>
+#14
+<20120103205942.500 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.500 RX>
+#A0#93#06#01#B0#93#07#01#80#91#00#01#90#91#01#01#A0#91#02#01#B0#91#03#01#01#96#A1#1D#B1#1D#80#93#00#01#90#93#01#01#A0#93#02#01#B0#93#03#01#BF#91#AF#91#9F#91#8F#91#3F#91#2F#91#0F#90#0F#BE#0F#90#1F#90#18#95#9B#01#AC#01#7F#B7#F8#94#80#91#00#01#90#91#01#01#A0#91#02#01#B0#91#03#01#66#B5#A8#9B#05#C0#6F#3F#19#F0#01#96#A1#1D#B1#1D#7F#BF#BA#2F#A9#2F#98#2F#88#27#86#0F#91#1D#A1#1D#B1#1D#62#E0
+<20120103205942.500 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.500 RX>
+#10
+<20120103205942.500 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.500 TX>
+#55#00#01#20
+<20120103205942.500 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.515 RX>
+#14
+<20120103205942.516 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.516 RX>
+#10
+<20120103205942.516 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.516 TX>
+#74#00#80#46#20
+<20120103205942.516 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.554 RX>
+#14
+<20120103205942.554 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.554 RX>
+#88#0F#99#1F#AA#1F#BB#1F#6A#95#D1#F7#BC#01#2D#C0#FF#B7#F8#94#80#91#00#01#90#91#01#01#A0#91#02#01#B0#91#03#01#E6#B5#A8#9B#05#C0#EF#3F#19#F0#01#96#A1#1D#B1#1D#FF#BF#BA#2F#A9#2F#98#2F#88#27#8E#0F#91#1D#A1#1D#B1#1D#E2#E0#88#0F#99#1F#AA#1F#BB#1F#EA#95#D1#F7#86#1B#97#0B#88#5E#93#40#C8#F2#21#50#30#40#40#40#50#40#68#51#7C#4F#21#15#31#05#41#05#51#05#71#F6#08#95#78#94#84#B5#82#60#84#BD#84#B5
+<20120103205942.554 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.554 RX>
+#10
+<20120103205942.554 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.554 TX>
+#55#40#01#20
+<20120103205942.554 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.569 RX>
+#14
+<20120103205942.570 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.570 RX>
+#10
+<20120103205942.570 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.570 TX>
+#74#00#80#46#20
+<20120103205942.570 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.607 RX>
+#14
+<20120103205942.608 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.608 RX>
+#81#60#84#BD#85#B5#82#60#85#BD#85#B5#81#60#85#BD#EE#E6#F0#E0#80#81#81#60#80#83#E1#E8#F0#E0#10#82#80#81#82#60#80#83#80#81#81#60#80#83#E0#E8#F0#E0#80#81#81#60#80#83#E1#EB#F0#E0#80#81#84#60#80#83#E0#EB#F0#E0#80#81#81#60#80#83#EA#E7#F0#E0#80#81#84#60#80#83#80#81#82#60#80#83#80#81#81#60#80#83#80#81#80#68#80#83#10#92#C1#00#08#95#48#2F#50#E0#CA#01#86#56#9F#4F#FC#01#24#91#4A#57#5F#4F#FA#01
+<20120103205942.608 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.608 RX>
+#10
+<20120103205942.608 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.608 TX>
+#55#80#01#20
+<20120103205942.608 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.623 RX>
+#14
+<20120103205942.623 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.623 RX>
+#10
+<20120103205942.623 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.624 TX>
+#74#00#80#46#20
+<20120103205942.624 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.661 RX>
+#14
+<20120103205942.662 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.662 RX>
+#84#91#88#23#C1#F0#E8#2F#F0#E0#EE#0F#FF#1F#E8#59#FF#4F#A5#91#B4#91#66#23#41#F4#9F#B7#F8#94#8C#91#20#95#82#23#8C#93#9F#BF#08#95#9F#B7#F8#94#8C#91#82#2B#8C#93#9F#BF#08#95#48#2F#50#E0#CA#01#82#55#9F#4F#FC#01#24#91#CA#01#86#56#9F#4F#FC#01#94#91#4A#57#5F#4F#FA#01#34#91#33#23#09#F4#40#C0#22#23#51#F1#23#30#71#F0#24#30#28#F4#21#30#A1#F0#22#30#11#F5#14#C0#26#30#B1#F0#27#30#C1#F0#24#30#D9#F4
+<20120103205942.662 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.662 RX>
+#10
+<20120103205942.662 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.662 TX>
+#55#C0#01#20
+<20120103205942.662 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.677 RX>
+#14
+<20120103205942.678 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.678 RX>
+#10
+<20120103205942.678 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.678 TX>
+#74#00#80#46#20
+<20120103205942.678 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.715 RX>
+#14
+<20120103205942.716 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.716 RX>
+#04#C0#80#91#80#00#8F#77#03#C0#80#91#80#00#8F#7D#80#93#80#00#10#C0#84#B5#8F#77#02#C0#84#B5#8F#7D#84#BD#09#C0#80#91#B0#00#8F#77#03#C0#80#91#B0#00#8F#7D#80#93#B0#00#E3#2F#F0#E0#EE#0F#FF#1F#EE#58#FF#4F#A5#91#B4#91#2F#B7#F8#94#66#23#21#F4#8C#91#90#95#89#23#02#C0#8C#91#89#2B#8C#93#2F#BF#08#95#CF#93#DF#93#0E#94#3B#01#0E#94#95#00#C0#E0#D0#E0#0E#94#80#00#20#97#E1#F3#0E#94#00#00#F9#CF#F8#94
+<20120103205942.716 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.716 RX>
+#10
+<20120103205942.716 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.716 TX>
+#55#00#02#20
+<20120103205942.716 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.731 RX>
+#14
+<20120103205942.732 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.732 RX>
+#10
+<20120103205942.732 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.732 TX>
+#74#00#02#46#20
+<20120103205942.732 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.747 RX>
+#14
+<20120103205942.748 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.748 RX>
+#FF#CF
+<20120103205942.748 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.748 RX>
+#10
+<20120103205942.748 SYS>
+Set timeouts: ReadInterval=500, ReadTotalTimeoutMultiplier=500, ReadTotalTimeoutConstant=500, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.748 TX>
+#51#20
+<20120103205942.748 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.763 RX>
+#14
+<20120103205942.764 SYS>
+Set timeouts: ReadInterval=5000, ReadTotalTimeoutMultiplier=5000, ReadTotalTimeoutConstant=5000, WriteTotalTimeoutMultiplier=0, WriteTotalTimeoutConstant=0
+<20120103205942.764 RX>
+#10
+<20120103205942.764 SYS>
+DTR off
+<20120103205942.764 SYS>
+RTS off
+<20120103205942.880 SYS>
+COM is closed
