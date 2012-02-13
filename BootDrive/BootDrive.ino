@@ -174,15 +174,16 @@ if (SD.exists("program.hex")){
   //enter program mode
   stk500_program_enable();
 
+
   while (readPage(myFile,&mybuf) > 0){
     DEBUGP("LOADADDR: ");
     DEBUGPLN(mybuf.pageaddress,HEX);
-    stk500_loadaddr(mybuf.pageaddress);
+    stk500_loadaddr(mybuf.pageaddress>>1);
     DEBUGP("Writing ");
     DEBUGPLN(mybuf.size);
     stk500_paged_write(&mybuf, mybuf.size, mybuf.size);
-    delay(10);
   }
+
   // could verify programming by reading back pages and comparing but for now, close out
   DEBUGPLN("LEAVEPGM");
   stk500_disable();
@@ -383,6 +384,8 @@ static int stk500_loadaddr(unsigned int addr)
   buf[1] = addr & 0xff;
   buf[2] = (addr >> 8) & 0xff;
   buf[3] = Sync_CRC_EOP;
+  DEBUGP("loadaddress: ");
+  dumphex(buf,4);
 
   stk500_send(buf, 4);
 
@@ -435,7 +438,7 @@ static int stk500_paged_write(AVRMEM * m,
 
 
    a_div = 1;
-
+/*
   if (n_bytes > m->size) {
     n_bytes = m->size;
     n = m->size;
@@ -448,18 +451,21 @@ static int stk500_paged_write(AVRMEM * m,
       n = n_bytes;
     }
   }
-
+  */
+/*
   for (addr = 0; addr < n; addr += page_size) {
     //report_progress (addr, n_bytes, NULL);
+
+
     
-    if ((addr + page_size > n_bytes)) {
+  if ((addr + page_size > n_bytes)) {
 	   block_size = n_bytes % page_size;
 	}
 	else {
 	   block_size = page_size;
 	}
   
-    /* Only skip on empty page if programming flash. */
+    /* Only skip on empty page if programming flash. 
     if (flash) {
       if (stk500_is_page_empty(addr, block_size, m->buf)) {
           continue;
@@ -468,34 +474,30 @@ static int stk500_paged_write(AVRMEM * m,
     tries = 0;
   retry:
     tries++;
-    stk500_loadaddr(addr/a_div);
-
+    //stk500_loadaddr(addr/a_div);
+*/
     /* build command block and send data separeately on arduino*/
+    
     i = 0;
     cmd_buf[i++] = Cmnd_STK_PROG_PAGE;
-    cmd_buf[i++] = (block_size >> 8) & 0xff;
-    cmd_buf[i++] = block_size & 0xff;
+    cmd_buf[i++] = (page_size >> 8) & 0xff;
+    cmd_buf[i++] = page_size & 0xff;
     cmd_buf[i++] = memtype;
     stk500_send(cmd_buf,4);
     DEBUGPLN("Header: ");
     dumphex(cmd_buf,4);
     DEBUGPLN("data:");
-    dumphex(&m->buf[0], block_size);
-    stk500_send(&m->buf[0], block_size);
+    dumphex(&m->buf[0], page_size);
+    stk500_send(&m->buf[0], page_size);
     cmd_buf[0] = Sync_CRC_EOP;
     stk500_send( cmd_buf, 1);
 
     if (stk500_recv(cmd_buf, 1) < 0)
-      exit(1);
+      exit(1); // errr need to fix this... 
     if (cmd_buf[0] == Resp_STK_NOSYNC) {
-      if (tries > 33) {
         error(ERRORNOSYNC);
         return -3;
-      }
-      if (stk500_getsync() < 0)
-	return -1;
-      goto retry;
-    }
+     }
     else if (cmd_buf[0] != Resp_STK_INSYNC) {
 
      error1(ERRORPROTOSYNC, cmd_buf[0]);
@@ -509,7 +511,7 @@ static int stk500_paged_write(AVRMEM * m,
 
       return -5;
     }
-  }
+  
 
   return n_bytes;
 }
@@ -713,7 +715,7 @@ void dumphex(unsigned char *buf,int len)
     if (i%16 == 0)
       DEBUGPLN();
     DEBUGP(buf[i],HEX);DEBUGP(" ");
-
   }
+  DEBUGPLN();
 }
      
