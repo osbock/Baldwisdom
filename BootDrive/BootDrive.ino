@@ -11,47 +11,58 @@
  
 
 #define BOOT_BAUD 115200
-#define txPin 2
-#define rxPin 3
-#define rstPin 7
+#define DEBUG_BAUD 19200
+// different pins will be needed for I2SD, as 2/3 are leds
+#define txPin 4
+#define rxPin 5
+#define rstPin 6
+
+//indicator LEDs on I2SD
+#define LED1 2
+#define LED2 3
 SoftwareSerial sSerial= SoftwareSerial(rxPin,txPin);
 // set up variables using the SD utility library functions:
 SdFile root;
+File myFile;
+avrmem mybuf;
+unsigned char mempage[128];
+
 //chipselect for the wyolum i2sd is 10
-const int chipSelect = 10;   
+const int chipSelect = 10;  
+//#define STANDALONE_DEBUG
+#ifdef STANDALONE_DEBUG
+#define DEBUGPLN Serial.println
+#define DEBUGP Serial.print
+#else
+#define DEBUGPLN sSerial.println
+#define DEBUGP sSerial.print
+#endif
 
 void setup() {
+  //digitalWrite(LED1,HIGH);
   //initialize serial port. Note that it's a good idea 
   // to use the softserial library here, so you can do debugging 
   // on USB. 
+  mybuf.buf = &mempage[0];
+  sSerial.begin(DEBUG_BAUD);
+  // and the regular serial port for error messages, etc.
+  Serial.begin(BOOT_BAUD);
   pinMode(rxPin, INPUT);
   pinMode(txPin, OUTPUT);
   pinMode(rstPin,OUTPUT);
   pinMode(chipSelect,OUTPUT);
+  pinMode(LED1,OUTPUT);
     // see if the card is present and can be initialized:
   if (!SD.begin(chipSelect)) {
-    Serial.println("Card failed, or not present");
+    DEBUGPLN("Card failed, or not present");
     // don't do anything more:
     return;
   }
-  Serial.println("card initialized.");
-  
-  digitalWrite(rstPin,HIGH);
-  sSerial.begin(BOOT_BAUD);
-  // and the regular serial port for error messages, etc.
-  Serial.begin(BOOT_BAUD);
-  unsigned int major=0;
-  unsigned int minor=0;
-  delay(100);
-   toggle_Reset();
-   delay(10);
-   stk500_getsync();
-   stk500_getparm(Parm_STK_SW_MAJOR, &major);
-   sSerial.print("software major: ");
-   sSerial.println(major);
-  stk500_getparm(Parm_STK_SW_MINOR, &minor);
-  sSerial.print("software Minor: ");
-   sSerial.println(minor);
+  DEBUGPLN("card initialized.");
+  blinky(2,200);
+  delay(5000);
+  programArduino();
+
 }
 
 void loop() {
@@ -59,7 +70,139 @@ void loop() {
   
 }
 
+// Line Buffer is set up in global SRAM
+#define LINELENGTH 50
+unsigned char linebuffer[LINELENGTH];
+unsigned char linemembuffer[16];
+int readPage(File input, avrmem *buf)
+{
+  int len;
+  int address;
+  int total_len =0;
+  // grab 128 bytes or less (one page)
+  for (int i=0 ; i < 8; i++){
+    len = readIntelHexLine(input, &address, &linemembuffer[0]);
+    if (len < 0)
+      break;
+    else
+      total_len=total_len+len;
+    if (i==0)// first record determines the page address
+      buf->pageaddress = address;
+    memcpy((buf->buf)+(i*16), linemembuffer, len);
+  }
+  buf->size = total_len;
+  return total_len;
+  
+}
+// read one line of intel hex from file. Return the number of databytes
+// Since the arduino code is always sequential, ignore the address for now.
+// If you want to burn bootloaders, etc. we'll have to modify to 
+// return the address.
 
+// INTEL HEX FORMAT:
+// :<8-bit record size><16bit address><8bit record type><data...><8bit checksum>
+int readIntelHexLine(File input, int *address, unsigned char *buf){
+  unsigned char c;
+  int i=0;
+  while (true){
+    if (input.available()){
+      c = input.read();
+      // this should handle unix or ms-dos line endings.
+      // break out when you reach either, then check
+      // for lf in stream to discard
+      if ((c == 0x0d)|| (c == 0x0a))
+        break;
+      else
+        linebuffer[i++] =c;
+    }
+    else return -1; //end of file
+  }
+  linebuffer[i]= 0; // terminate the string
+  //peek at the next byte and discard if line ending char.
+  if (input.peek() == 0xa)
+    input.read();
+  int len = hex2byte(&linebuffer[1]);
+  *address = (hex2byte(&linebuffer[3]) <<8) |
+               (hex2byte(&linebuffer[5]));
+  int j=0;
+  for (int i = 9; i < ((len*2)+9); i +=2){
+    buf[j] = hex2byte(&linebuffer[i]);
+    j++;
+  }
+  return len;
+}
+unsigned char hex2byte(unsigned char *code){
+  unsigned char result =0;
+
+  if ((code[0] >= '0') && (code[0] <='9')){
+    result = ((int)code[0] - '0') << 4;
+  }
+  else if ((code[0] >='A') && (code[0] <= 'F')) {
+    result = ((int)code[0] - 'A'+10) << 4;
+  }
+  if ((code[1] >= '0') && (code[1] <='9')){
+    result |= ((int)code[1] - '0');
+  }
+  else if ((code[1] >='A') && (code[1] <= 'F'))  
+    result |= ((int)code[1] -'A'+10);  
+return result;
+}
+
+// Right now there is only one file.
+void programArduino(){
+  digitalWrite(rstPin,HIGH);
+
+  unsigned int major=0;
+  unsigned int minor=0;
+  delay(100);
+   toggle_Reset();
+   delay(10);
+   stk500_getsync();
+   stk500_getparm(Parm_STK_SW_MAJOR, &major);
+  DEBUGP("software major: ");
+  DEBUGPLN(major);
+  stk500_getparm(Parm_STK_SW_MINOR, &minor);
+  DEBUGP("software Minor: ");
+  DEBUGPLN(minor);
+if (SD.exists("program.hex")){
+    myFile = SD.open("program.hex", FILE_READ);
+  }
+  else{
+    DEBUGPLN("program.hex doesn't exist");
+    return;
+  }
+  //enter program mode
+  stk500_program_enable();
+
+  while (readPage(myFile,&mybuf) > 0){
+    DEBUGP("LOADADDR: ");
+    DEBUGPLN(mybuf.pageaddress,HEX);
+    stk500_loadaddr(mybuf.pageaddress);
+    DEBUGP("Writing ");
+    DEBUGPLN(mybuf.size);
+    stk500_paged_write(&mybuf, mybuf.size, mybuf.size);
+    delay(10);
+  }
+  // could verify programming by reading back pages and comparing but for now, close out
+  DEBUGPLN("LEAVEPGM");
+  stk500_disable();
+  delay(10);
+  DEBUGPLN("RESET");
+  toggle_Reset();
+  myFile.close();
+  blinky(4,500);
+  
+  
+}
+void blinky(int times, long delaytime){
+  for (int i = 0 ; i < times; i++){
+    digitalWrite(LED1,HIGH);
+    delay(delaytime);
+    digitalWrite(LED1, LOW);
+    delay (delaytime);
+  }
+  
+}
 void toggle_Reset()
 {
   digitalWrite(rstPin, LOW);
@@ -78,18 +221,17 @@ static int stk500_recv(byte * buf, unsigned int len)
  
   rv = Serial.readBytes((char *)buf,len);
   if (rv < 0) {
-    sSerial.println("stk500_recv(): programmer is not responding\n");
+    error(ERRORNOPGMR);
     return -1;
   }
   return 0;
 }
 int stk500_drain()
 {
-sSerial.println("in Drain");
   while (Serial.available()> 0)
   {  
-    sSerial.print("draining: ");
-    sSerial.println(Serial.read(),HEX);
+    DEBUGP("draining: ");
+    DEBUGPLN(Serial.read(),HEX);
   }
   return 1;
 }
@@ -115,8 +257,7 @@ int stk500_getsync()
   if (stk500_recv(resp, 1) < 0)
     return -1;
   if (resp[0] != Resp_STK_INSYNC) {
-        sSerial.print("stk500_getsync(): not in sync: resp: ");
-        sSerial.println(resp[0],HEX);
+        error1(ERRORPROTOSYNC,resp[0]);
     stk500_drain();
     return -1;
   }
@@ -124,9 +265,7 @@ int stk500_getsync()
   if (stk500_recv(resp, 1) < 0)
     return -1;
   if (resp[0] != Resp_STK_OK) {
-    sSerial.print("stk500_getsync(): can't communicate with device: ");
-    sSerial.println(resp[0],HEX);
- // add response code here...
+    error1(ERRORNOTOK,resp[0]);
     return -1;
   }
   return 0;
@@ -136,7 +275,7 @@ static int stk500_getparm(unsigned parm, unsigned * value)
   byte buf[16];
   unsigned v;
   int tries = 0;
-sSerial.println("in getparm");
+
  retry:
   tries++;
   buf[0] = Cmnd_STK_GET_PARAMETER;
@@ -149,7 +288,7 @@ sSerial.println("in getparm");
     exit(1);
   if (buf[0] == Resp_STK_NOSYNC) {
     if (tries > 33) {
-      sSerial.print("stk500_getparm(): can't get into sync\n");
+      error(ERRORNOSYNC);
       return -1;
     }
    if (stk500_getsync() < 0)
@@ -158,8 +297,7 @@ sSerial.println("in getparm");
     goto retry;
   }
   else if (buf[0] != Resp_STK_INSYNC) {
-    sSerial.print("stk500_getparm(): (a) protocol error, ");
-    sSerial.println(buf[0],HEX);
+    error1(ERRORPROTOSYNC,buf[0]);
     return -2;
   }
 
@@ -170,14 +308,11 @@ sSerial.println("in getparm");
   if (stk500_recv(buf, 1) < 0)
     exit(1);
   if (buf[0] == Resp_STK_FAILED) {
-    sSerial.print("stk500_getparm(): parameter ");
-    sSerial.print(v);
-    sSerial.println(" failed");
+    error1(ERRORPARMFAILED,v);
     return -3;
   }
   else if (buf[0] != Resp_STK_OK) {
-    sSerial.print("stk500_getparm(): (a) protocol error, resp ");
-    sSerial.println(buf[0],HEX);
+    error1(ERRORNOTOK,buf[0]);
     return -3;
   }
 
@@ -193,7 +328,7 @@ static int arduino_read_sig_bytes(AVRMEM * m)
   /* Signature byte reads are always 3 bytes. */
 
   if (m->size < 3) {
-    sSerial.println("memsize too small for sig byte read");
+    DEBUGPLN("memsize too small for sig byte read");
     return -1;
   }
 
@@ -205,17 +340,14 @@ static int arduino_read_sig_bytes(AVRMEM * m)
   if (stk500_recv(buf, 5) < 0)
     return -1;
   if (buf[0] == Resp_STK_NOSYNC) {
-    sSerial.println("stk500_cmd(): in Read Sig programmer is out of sync\n");
+    error(ERRORNOSYNC);
 	return -1;
   } else if (buf[0] != Resp_STK_INSYNC) {
-    sSerial.print("arduino_read_sig_bytes(): (a) protocol expect=0x14 resp=");
-    sSerial.print(buf[0],HEX);
+    error1(ERRORPROTOSYNC,buf[0]);
 	return -2;
   }
   if (buf[4] != Resp_STK_OK) {
-    sSerial.print("arduino_read_sig_bytes(): (a) protocol error, "
-			"expect=0x10, resp=");
-    sSerial.println(buf[4],HEX);
+    error1(ERRORNOTOK,buf[4]);
     return -3;
   }
 
@@ -258,7 +390,7 @@ static int stk500_loadaddr(unsigned int addr)
     exit(1);
   if (buf[0] == Resp_STK_NOSYNC) {
     if (tries > 33) {
-      sSerial.println( "%s: stk500_loadaddr(): can't get into sync\n" );
+      error(ERRORNOSYNC);
       return -1;
     }
     if (stk500_getsync() < 0)
@@ -266,11 +398,7 @@ static int stk500_loadaddr(unsigned int addr)
     goto retry;
   }
   else if (buf[0] != Resp_STK_INSYNC) {
-    sSerial.println(
-            "%s: stk500_loadaddr(): (a) protocol error, "
-            "expect=0x%02x, resp=0x%02x\n");
-    // maybe add more details later
-    //             Resp_STK_INSYNC, buf[0]);
+    error1(ERRORPROTOSYNC, buf[0]);
     return -1;
   }
 
@@ -280,18 +408,16 @@ static int stk500_loadaddr(unsigned int addr)
     return 0;
   }
 
-  sSerial.println(
-          "%s: loadaddr(): (b) protocol error, "
-          "expect=0x%02x, resp=0x%02x\n"); 
-    // maybe add more details later
-    //             Resp_STK_INSYNC, buf[0]);
-
+  error1(ERRORPROTOSYNC, buf[0]);
   return -1;
 }
 static int stk500_paged_write(AVRMEM * m, 
                               int page_size, int n_bytes)
 {
-  unsigned char buf[page_size + 16];
+  // This code from avrdude has the luxury of living on a PC and copying buffers around.
+  // not for us...
+ // unsigned char buf[page_size + 16];
+ unsigned char cmd_buf[16]; //just the header
   int memtype;
   unsigned int addr;
   int a_div;
@@ -344,46 +470,42 @@ static int stk500_paged_write(AVRMEM * m,
     tries++;
     stk500_loadaddr(addr/a_div);
 
-    /* build command block and avoid multiple send commands as it leads to a crash
-        of the silabs usb serial driver on mac os x */
+    /* build command block and send data separeately on arduino*/
     i = 0;
-    buf[i++] = Cmnd_STK_PROG_PAGE;
-    buf[i++] = (block_size >> 8) & 0xff;
-    buf[i++] = block_size & 0xff;
-    buf[i++] = memtype;
-    memcpy(&buf[i], &m->buf[addr], block_size);
-    i += block_size;
-    buf[i++] = Sync_CRC_EOP;
-    stk500_send( buf, i);
+    cmd_buf[i++] = Cmnd_STK_PROG_PAGE;
+    cmd_buf[i++] = (block_size >> 8) & 0xff;
+    cmd_buf[i++] = block_size & 0xff;
+    cmd_buf[i++] = memtype;
+    stk500_send(cmd_buf,4);
+    DEBUGPLN("Header: ");
+    dumphex(cmd_buf,4);
+    DEBUGPLN("data:");
+    dumphex(&m->buf[0], block_size);
+    stk500_send(&m->buf[0], block_size);
+    cmd_buf[0] = Sync_CRC_EOP;
+    stk500_send( cmd_buf, 1);
 
-    if (stk500_recv(buf, 1) < 0)
+    if (stk500_recv(cmd_buf, 1) < 0)
       exit(1);
-    if (buf[0] == Resp_STK_NOSYNC) {
+    if (cmd_buf[0] == Resp_STK_NOSYNC) {
       if (tries > 33) {
-        sSerial.println( "\n%s: stk500_paged_write(): can't get into sync\n");
+        error(ERRORNOSYNC);
         return -3;
       }
       if (stk500_getsync() < 0)
 	return -1;
       goto retry;
     }
-    else if (buf[0] != Resp_STK_INSYNC) {
-      sSerial.println(
-              "\n%s: stk500_paged_write(): (a) protocol error, "
-              "expect=0x%02x, resp=0x%02x\n");
-	      //maybe more detail later
-	      //           Resp_STK_INSYNC, buf[0]);
+    else if (cmd_buf[0] != Resp_STK_INSYNC) {
+
+     error1(ERRORPROTOSYNC, cmd_buf[0]);
       return -4;
     }
     
-    if (stk500_recv(buf, 1) < 0)
+    if (stk500_recv(cmd_buf, 1) < 0)
       exit(1);
-    if (buf[0] != Resp_STK_OK) {
-      sSerial.println(
-              "\n%s: stk500_paged_write(): (a) protocol error, "
-              "expect=0x%02x, resp=0x%02x\n");
-	      //maybe more detail later
-	      //           Resp_STK_INSYNC, buf[0]);
+    if (cmd_buf[0] != Resp_STK_OK) {
+    error1(ERRORNOTOK,cmd_buf[0]);
 
       return -5;
     }
@@ -391,6 +513,7 @@ static int stk500_paged_write(AVRMEM * m,
 
   return n_bytes;
 }
+
 static int stk500_paged_load(AVRMEM * m, 
                              int page_size, int n_bytes)
 {
@@ -445,7 +568,7 @@ static int stk500_paged_load(AVRMEM * m,
       exit(1);
     if (buf[0] == Resp_STK_NOSYNC) {
       if (tries > 33) {
-        sSerial.println( "\n%s: stk500_paged_load(): can't get into sync\n");
+        error(ERRORNOSYNC);
         return -3;
       }
       if (stk500_getsync() < 0)
@@ -453,11 +576,7 @@ static int stk500_paged_load(AVRMEM * m,
       goto retry;
     }
     else if (buf[0] != Resp_STK_INSYNC) {
-      sSerial.println(
-              "\n%s: stk500_paged_load(): (a) protocol error, "
-              "expect=0x%02x, resp=0x%02x\n");
-	      //maybe more detail later
-	      //           Resp_STK_INSYNC, buf[0]);
+      error1(ERRORPROTOSYNC, buf[0]);
       return -4;
     }
 
@@ -468,11 +587,7 @@ static int stk500_paged_load(AVRMEM * m,
       exit(1);
 
     if (buf[0] != Resp_STK_OK) {
-        sSerial.println(
-                "\n%s: stk500_paged_load(): (a) protocol error, "
-                "expect=0x%02x, resp=0x%02x\n");
-	      //maybe more detail later
-	      //           Resp_STK_INSYNC, buf[0]);
+        error1(ERRORPROTOSYNC, buf[0]);
         return -5;
       }
     }
@@ -481,6 +596,124 @@ static int stk500_paged_load(AVRMEM * m,
   return n_bytes;
 }
 
+/*
+ * issue the 'program enable' command to the AVR device
+ */
+static int stk500_program_enable()
+{
+  unsigned char buf[16];
+  int tries=0;
+
+ retry:
+  
+  tries++;
+
+  buf[0] = Cmnd_STK_ENTER_PROGMODE;
+  buf[1] = Sync_CRC_EOP;
+
+  stk500_send( buf, 2);
+  if (stk500_recv( buf, 1) < 0)
+    exit(1);
+  if (buf[0] == Resp_STK_NOSYNC) {
+    if (tries > 33) {
+      error(ERRORNOSYNC);
+      return -1;
+    }
+    if (stk500_getsync()< 0)
+      return -1;
+    goto retry;
+  }
+  else if (buf[0] != Resp_STK_INSYNC) {
+    error1(ERRORPROTOSYNC,buf[0]);
+    return -1;
+  }
+
+  if (stk500_recv( buf, 1) < 0)
+    exit(1);
+  if (buf[0] == Resp_STK_OK) {
+    return 0;
+  }
+  else if (buf[0] == Resp_STK_NODEVICE) {
+    error(ERRORNODEVICE);
+    return -1;
+  }
+
+  if(buf[0] == Resp_STK_FAILED)
+  {
+      error(ERRORNOPROGMODE);
+	  return -1;
+  }
 
 
+  error1(ERRORUNKNOWNRESP,buf[0]);
 
+  return -1;
+}
+
+static void stk500_disable()
+{
+  unsigned char buf[16];
+  int tries=0;
+
+ retry:
+  
+  tries++;
+
+  buf[0] = Cmnd_STK_LEAVE_PROGMODE;
+  buf[1] = Sync_CRC_EOP;
+
+  stk500_send( buf, 2);
+  if (stk500_recv( buf, 1) < 0)
+    exit(1);
+  if (buf[0] == Resp_STK_NOSYNC) {
+    if (tries > 33) {
+      error(ERRORNOSYNC);
+      return;
+    }
+    if (stk500_getsync() < 0)
+      return;
+    goto retry;
+  }
+  else if (buf[0] != Resp_STK_INSYNC) {
+    error1(ERRORPROTOSYNC,buf[0]);
+    return;
+  }
+
+  if (stk500_recv( buf, 1) < 0)
+    exit(1);
+  if (buf[0] == Resp_STK_OK) {
+    return;
+  }
+  else if (buf[0] == Resp_STK_NODEVICE) {
+    error(ERRORNODEVICE);
+    return;
+  }
+
+  error1(ERRORUNKNOWNRESP,buf[0]);
+
+  return;
+}
+//original avrdude error messages get copied to ram and overflow, wo use numeric codes.
+void error1(int errno,unsigned char detail){
+  DEBUGP("error: ");
+  DEBUGP(errno);
+  DEBUGP(" detail: 0x");
+  DEBUGPLN(detail,HEX);
+}
+
+
+void error(int errno){
+  DEBUGP("error" );
+  DEBUGPLN(errno);
+}
+void dumphex(unsigned char *buf,int len)
+{
+  for (int i = 0; i < len; i++)
+  {
+    if (i%16 == 0)
+      DEBUGPLN();
+    DEBUGP(buf[i],HEX);DEBUGP(" ");
+
+  }
+}
+     

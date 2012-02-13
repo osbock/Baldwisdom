@@ -14,6 +14,7 @@
 #define STK_SIGN_ON_MESSAGE "AVR STK"   // Sign on string for Cmnd_STK_GET_SIGN_ON
 typedef struct avrmem {
   int size;
+  unsigned int pageaddress;
   unsigned char *buf;
 } AVRMEM;
 
@@ -104,5 +105,14 @@ typedef struct avrmem {
 #define Stat_STK_LEDR              0x40  // Red LED status,    '1' - Lit
 #define Stat_STK_LEDBLINK          0x80  // LED blink ON/OFF,  '1' - Blink
 
+// **************************[Error messages]******************************//
+#define ERRORUNKNOWNRESP 1 //stk500_disable(): unknown response=
+#define ERRORNODEVICE 2 
+#define ERRORPROTOSYNC 3 //stk500_disable(): protocol error, expect=Resp_STK_INSYNC, resp=
+#define ERRORNOSYNC 4  //can't get into sync
+#define ERRORNOPROGMODE 5 //failed to get into programming mode
+#define ERRORNOPGMR 6 //programmer not responding
+#define ERRORNOTOK 7 
+#define ERRORPARMFAILED 8 // get parameter failed: response
 
 // *****************************[ End Of COMMAND.H ]**************************
