@@ -176,19 +176,13 @@ if (SD.exists("program.hex")){
 
 
   while (readPage(myFile,&mybuf) > 0){
-    DEBUGP("LOADADDR: ");
-    DEBUGPLN(mybuf.pageaddress,HEX);
     stk500_loadaddr(mybuf.pageaddress>>1);
-    DEBUGP("Writing ");
-    DEBUGPLN(mybuf.size);
     stk500_paged_write(&mybuf, mybuf.size, mybuf.size);
   }
 
   // could verify programming by reading back pages and comparing but for now, close out
-  DEBUGPLN("LEAVEPGM");
   stk500_disable();
   delay(10);
-  DEBUGPLN("RESET");
   toggle_Reset();
   myFile.close();
   blinky(4,500);
@@ -358,20 +352,7 @@ static int arduino_read_sig_bytes(AVRMEM * m)
 
   return 3;
 }
-static int stk500_is_page_empty(unsigned int address, int page_size, 
-                                const unsigned char *buf)
-{
-    int i;
-    for(i = 0; i < page_size; i++) {
-        if(buf[address + i] != 0xFF) {
-            /* Page is not empty. */
-            return(0);
-        }
-    }
-    
-    /* Page is empty. */
-    return(1);
-}
+
 static int stk500_loadaddr(unsigned int addr)
 {
   unsigned char buf[16];
@@ -384,8 +365,7 @@ static int stk500_loadaddr(unsigned int addr)
   buf[1] = addr & 0xff;
   buf[2] = (addr >> 8) & 0xff;
   buf[3] = Sync_CRC_EOP;
-  DEBUGP("loadaddress: ");
-  dumphex(buf,4);
+
 
   stk500_send(buf, 4);
 
@@ -422,8 +402,7 @@ static int stk500_paged_write(AVRMEM * m,
  // unsigned char buf[page_size + 16];
  unsigned char cmd_buf[16]; //just the header
   int memtype;
-  unsigned int addr;
-  int a_div;
+ // unsigned int addr;
   int block_size;
   int tries;
   unsigned int n;
@@ -437,45 +416,6 @@ static int stk500_paged_write(AVRMEM * m,
   flash = 1;
 
 
-   a_div = 1;
-/*
-  if (n_bytes > m->size) {
-    n_bytes = m->size;
-    n = m->size;
-  }
-  else {
-    if ((n_bytes % page_size) != 0) {
-      n = n_bytes + page_size - (n_bytes % page_size);
-    }
-    else {
-      n = n_bytes;
-    }
-  }
-  */
-/*
-  for (addr = 0; addr < n; addr += page_size) {
-    //report_progress (addr, n_bytes, NULL);
-
-
-    
-  if ((addr + page_size > n_bytes)) {
-	   block_size = n_bytes % page_size;
-	}
-	else {
-	   block_size = page_size;
-	}
-  
-    /* Only skip on empty page if programming flash. 
-    if (flash) {
-      if (stk500_is_page_empty(addr, block_size, m->buf)) {
-          continue;
-      }
-    }
-    tries = 0;
-  retry:
-    tries++;
-    //stk500_loadaddr(addr/a_div);
-*/
     /* build command block and send data separeately on arduino*/
     
     i = 0;
@@ -484,10 +424,6 @@ static int stk500_paged_write(AVRMEM * m,
     cmd_buf[i++] = page_size & 0xff;
     cmd_buf[i++] = memtype;
     stk500_send(cmd_buf,4);
-    DEBUGPLN("Header: ");
-    dumphex(cmd_buf,4);
-    DEBUGPLN("data:");
-    dumphex(&m->buf[0], page_size);
     stk500_send(&m->buf[0], page_size);
     cmd_buf[0] = Sync_CRC_EOP;
     stk500_send( cmd_buf, 1);
@@ -515,7 +451,7 @@ static int stk500_paged_write(AVRMEM * m,
 
   return n_bytes;
 }
-
+#ifdef LOADVERIFY //maybe sometime? note code needs to be re-written won't work as is
 static int stk500_paged_load(AVRMEM * m, 
                              int page_size, int n_bytes)
 {
@@ -597,6 +533,7 @@ static int stk500_paged_load(AVRMEM * m,
 
   return n_bytes;
 }
+#endif
 
 /*
  * issue the 'program enable' command to the AVR device
