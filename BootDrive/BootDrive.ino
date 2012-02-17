@@ -29,6 +29,9 @@ unsigned char mempage[128];
 
 //chipselect for the wyolum i2sd is 10
 const int chipSelect = 10;  
+// STANDALONE_DEBUG sends error messages out the main 
+// serial port. Not useful after you are actually trying to slave
+// another arduino
 //#define STANDALONE_DEBUG
 #ifdef STANDALONE_DEBUG
 #define DEBUGPLN Serial.println
@@ -61,7 +64,7 @@ void setup() {
   DEBUGPLN("card initialized.");
   blinky(2,200);
   delay(5000);
-  programArduino();
+  programArduino("program.hex");
 
 }
 
@@ -149,7 +152,8 @@ return result;
 }
 
 // Right now there is only one file.
-void programArduino(){
+void programArduino(char * filename){
+
   digitalWrite(rstPin,HIGH);
 
   unsigned int major=0;
@@ -164,11 +168,12 @@ void programArduino(){
   stk500_getparm(Parm_STK_SW_MINOR, &minor);
   DEBUGP("software Minor: ");
   DEBUGPLN(minor);
-if (SD.exists("program.hex")){
-    myFile = SD.open("program.hex", FILE_READ);
+if (SD.exists(filename)){
+    myFile = SD.open(filename, FILE_READ);
   }
   else{
-    DEBUGPLN("program.hex doesn't exist");
+    DEBUGP(filename);
+    DEBUGPLN(" doesn't exist");
     return;
   }
   //enter program mode
