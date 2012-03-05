@@ -76,6 +76,7 @@ void setup() {
   pinMode(rstPin,OUTPUT);
   pinMode(chipSelect,OUTPUT);
   pinMode(LED1,OUTPUT);
+  digitalWrite(rstPin,HIGH);
     // see if the card is present and can be initialized:
   if (!SD.begin(chipSelect)) {
     lcd.print("Card failed");
@@ -106,9 +107,9 @@ void loop()
       currentEntry = root.openNextFile();
       if (! currentEntry) {
        // no more files (rewind?)
-       root.close();
-       root = SD.open("/");
-       //root.rewindDirectory();
+       //root.close();
+       //root = SD.open("/");
+       root.rewindDirectory();
        currentEntry = root.openNextFile();
       }
       lcd.print(currentEntry.name());
@@ -141,13 +142,13 @@ int readPage(File input, avrmem *buf)
   // grab 128 bytes or less (one page)
   for (int i=0 ; i < 8; i++){
     len = readIntelHexLine(input, &address, &linemembuffer[0]);
-    if (len < 0)
+    if (len <= 0)
       break;
     else
       total_len=total_len+len;
     if (i==0)// first record determines the page address
       buf->pageaddress = address;
-    memcpy((buf->buf)+(i*16), linemembuffer, len);
+    memcpy((buf->buf)+(total_len-len), linemembuffer, len);
   }
   buf->size = total_len;
   return total_len;
@@ -216,7 +217,7 @@ void programArduino(char * filename){
   unsigned int minor=0;
   delay(100);
    toggle_Reset();
-   delay(10);
+   delay(90);
    stk500_getsync();
    stk500_getparm(Parm_STK_SW_MAJOR, &major);
 lcd2("sw major: ", major);
@@ -261,7 +262,7 @@ void blinky(int times, long delaytime){
 void toggle_Reset()
 {
   digitalWrite(rstPin, LOW);
-  delayMicroseconds(1000);
+  delayMicroseconds(2000);
   digitalWrite(rstPin,HIGH);
 }
 static int stk500_send(byte *buf, unsigned int len)
