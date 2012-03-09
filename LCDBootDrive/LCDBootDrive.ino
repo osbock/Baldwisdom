@@ -1,4 +1,4 @@
-#include <SoftwareSerial.h>
+//#include <SoftwareSerial.h>
 #include "stk500.h"
 #include <SD.h>
 #include <Wire.h>
@@ -7,6 +7,7 @@
 
 //sd card stuff
 File root;
+File recordFile;
 const int chipSelect = 10;
 //Adafruit LCD shield
 Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
@@ -19,19 +20,23 @@ Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
 #define BLUE 0x4
 #define VIOLET 0x5
 #define WHITE 0x7
+
+#define OPTIBOOT_MINVER 4
+#define OPTIBOOT_MAJVER 4
 /* Read hex file from sd/micro-sd card and program
  *  another arduino via ttl serial.
  * borrows heavily from avrdude source code (GPL license)
  *   Copyright (C) 2002-2004 Brian S. Dean <bsd@bsdhome.com>
  *   Copyright (C) 2008 Joerg Wunsch
+ * Recording code borrowed from optiboot
  *  Created 12/26/2011 Kevin Osborn
  */
  
 
 //Arduino UNO
-//#define BOOT_BAUD 115200 
+#define BOOT_BAUD 115200 
 // Adruino Duemilanove with 328
-#define BOOT_BAUD 57600
+//#define BOOT_BAUD 57600
 #define DEBUG_BAUD 19200
 // different pins will be needed for I2SD, as 2/3 are leds
 #define txPin 4
@@ -41,11 +46,12 @@ Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
 //indicator LEDs on I2SD
 #define LED1 13
 #define LED2 3
-SoftwareSerial sSerial= SoftwareSerial(rxPin,txPin);
+//SoftwareSerial sSerial= SoftwareSerial(rxPin,txPin);
 // set up variables using the SD utility library functions:
 File myFile;
 avrmem mybuf;
 unsigned char mempage[128];
+#define buff mybuf.buf
 
 //chipselect for the wyolum i2sd is 10
 
@@ -53,22 +59,19 @@ unsigned char mempage[128];
 // serial port. Not useful after you are actually trying to slave
 // another arduino
 //#define STANDALONE_DEBUG
-#ifdef STANDALONE_DEBUG
+/*#ifdef STANDALONE_DEBUG
 #define DEBUGPLN Serial.println
 #define DEBUGP Serial.print
 #else
 #define DEBUGPLN sSerial.println
 #define DEBUGP sSerial.print
 #endif
+*/
 
 void setup() {
-  //digitalWrite(LED1,HIGH);
-  //initialize serial port. Note that it's a good idea 
-  // to use the softserial library here, so you can do debugging 
-  // on USB. 
   lcd.begin(16,2);
   mybuf.buf = &mempage[0];
-  sSerial.begin(DEBUG_BAUD);
+  //sSerial.begin(DEBUG_BAUD);
   // and the regular serial port for error messages, etc.
   Serial.begin(BOOT_BAUD);
   pinMode(rxPin, INPUT);
@@ -84,14 +87,12 @@ void setup() {
     return;
   }
   lcd.print("card init");
-  blinky(2,200);
   delay(1000);
 
   root = SD.open("/");
   lcd.setBacklight(VIOLET);
   lcd.clear();
   lcd.print("Bootdrive");
-  
 }
 
 File currentEntry;
@@ -125,6 +126,16 @@ void loop()
       lcd.setBacklight(GREEN);
       lcd.clear();
       lcd.print("done");
+    }else if (buttons & BUTTON_LEFT){
+      lcd.clear();
+      lcd.setBacklight(TEAL);
+      lcd.setCursor(0,0);
+      lcd.print("recording");
+      record();
+      lcd.setBacklight(GREEN);
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("done");
     }
     delay(500); // crude debounce
     }
@@ -134,11 +145,17 @@ void loop()
 #define LINELENGTH 50
 unsigned char linebuffer[LINELENGTH];
 unsigned char linemembuffer[16];
-int readPage(File input, avrmem *buf)
+int readPage(File input, avrmem *buf, boolean binaryFlag)
 {
   int len;
   int address;
   int total_len =0;
+  
+  if (binaryFlag){ // reading binary file, read a whole page at once
+    len = input.read(buf->buf,128);
+    total_len=len;
+    //buf->pageaddress = buf->pageaddress + 128; // if loading a binary file, just add a page to the last address
+  }else
   // grab 128 bytes or less (one page)
   for (int i=0 ; i < 8; i++){
     len = readIntelHexLine(input, &address, &linemembuffer[0]);
@@ -228,37 +245,31 @@ if (SD.exists(filename)){
     myFile = SD.open(filename, FILE_READ);
   }
   else{
-    DEBUGP(filename);
-    DEBUGPLN(" doesn't exist");
+   /* DEBUGP(filename);
+    DEBUGPLN(" doesn't exist");*/
     return;
   }
+    boolean binaryFlag = isBinaryFile(myFile);
+    mybuf.pageaddress = 0;
   //enter program mode
   stk500_program_enable();
 
-
-  while (readPage(myFile,&mybuf) > 0){
+  while (readPage(myFile,&mybuf,binaryFlag) > 0){
     stk500_loadaddr(mybuf.pageaddress>>1);
     stk500_paged_write(&mybuf, mybuf.size, mybuf.size);
+    if (binaryFlag)
+      mybuf.pageaddress+= 128;
   }
-
+  
   // could verify programming by reading back pages and comparing but for now, close out
   stk500_disable();
   delay(10);
   toggle_Reset();
   myFile.close();
-  blinky(4,500);
   
   
 }
-void blinky(int times, long delaytime){
-  for (int i = 0 ; i < times; i++){
-    digitalWrite(LED1,HIGH);
-    delay(delaytime);
-    digitalWrite(LED1, LOW);
-    delay (delaytime);
-  }
-  
-}
+
 void toggle_Reset()
 {
   digitalWrite(rstPin, LOW);
@@ -384,7 +395,7 @@ static int arduino_read_sig_bytes(AVRMEM * m)
   /* Signature byte reads are always 3 bytes. */
 
   if (m->size < 3) {
-    DEBUGPLN("memsize too small for sig byte read");
+    lcd.print("memsize too small");
     return -1;
   }
 
@@ -725,4 +736,155 @@ void lcd2(char* msg,int detail){
  DEBUGPLN();
 }
 */
+
+void record(){
+    /* Forever loop */
+    uint8_t ch;
+    uint16_t address=0;
+    uint8_t length;
+    if (SD.exists("record.bin"))
+      SD.remove("record.bin");
+    recordFile = SD.open("record.bin", FILE_WRITE);
+    
+  for (;;) {
+    /* get character from UART */
+    ch = getch();
+
+    if(ch == Cmnd_STK_GET_PARAMETER) {
+      unsigned char which = getch();
+      if (!verifySpace()) break;
+      if (which == 0x82) {
+	/*
+	 * Send optiboot version as "minor SW version"
+	 */
+	putch(OPTIBOOT_MINVER);
+      } else if (which == 0x81) {
+	  putch(OPTIBOOT_MAJVER);
+      } else {
+	/*
+	 * GET PARAMETER returns a generic 0x03 reply for
+         * other parameters - enough to keep Avrdude happy
+	 */
+	putch(0x03);
+      }
+    }
+    else if(ch == Cmnd_STK_SET_DEVICE) {
+      // SET DEVICE is ignored
+      getNch(20);
+    }
+    else if(ch == Cmnd_STK_SET_DEVICE_EXT) {
+      // SET DEVICE EXT is ignored
+      getNch(5);
+    }
+    else if(ch == Cmnd_STK_LOAD_ADDRESS) {
+      // LOAD ADDRESS
+      uint16_t newAddress;
+      newAddress = getch();
+      newAddress = (newAddress & 0xff) | (getch() << 8);
+
+      newAddress += newAddress; // Convert from word address to byte address
+      address = newAddress;
+      mybuf.pageaddress=address;
+      if (!verifySpace())break;
+    }
+    else if(ch == Cmnd_STK_UNIVERSAL) {
+      // UNIVERSAL command is ignored
+      getNch(4);
+      putch(0x00);
+    }
+    /* Write memory, length is big endian and is in bytes */
+    else if(ch == Cmnd_STK_PROG_PAGE) {
+      // PROGRAM PAGE - we support flash programming only, not EEPROM
+      uint8_t *bufPtr;
+      uint16_t addrPtr;
+
+      getch();			/* getlen() */
+      length = getch();
+      getch();
+      mybuf.size = length;
+  // While that is going on, read in page contents
+      bufPtr = buff;
+      do *bufPtr++ = getch();
+      while (--length);
+      recordFile.write(buff,mybuf.size);
+   
+      // Read command terminator, start reply
+      if (!verifySpace())break;
+    }
+    /* Read memory block mode, length is big endian.  */
+    else if(ch == Cmnd_STK_READ_PAGE) {
+      // READ PAGE - we only read flash
+      getch();			/* getlen() */
+      length = getch();
+      getch();
+
+      if (!verifySpace())break;
+      recordFile.seek(address);
+      recordFile.read(buff,length);
+      Serial.write(buff,length);
+
+    }
+
+    /* Get device signature bytes  */
+    else if(ch == Cmnd_STK_READ_SIGN) {
+      // READ SIGN - return what Avrdude wants to hear
+      verifySpace();
+      putch(SIGNATURE_0);
+      putch(SIGNATURE_1);
+      putch(SIGNATURE_2);
+    }
+    else if (ch == 'Q') {
+      verifySpace();
+      recordFile.close();
+      putch(Resp_STK_OK);
+      return;
+    }
+    else if (ch == Cmnd_STK_LEAVE_PROGMODE){
+      verifySpace();
+      recordFile.close();
+      putch(Resp_STK_OK);
+      return;
+    }
+    else {
+      // This covers the response to commands like STK_ENTER_PROGMODE
+      verifySpace();
+    }
+    putch(Resp_STK_OK);
+  }
+  recordFile.close();
+}
+uint8_t getch() {
+  while(!Serial.available());
+  return Serial.read();
+}
+void readbytes(int n) {
+  for (int x = 0; x < n; x++) {
+    buff[x] = Serial.read();
+  }
+}
+void getNch(uint8_t count) {
+  do getch(); while (--count);
+  verifySpace();
+}
+void putch(uint8_t ch){
+  Serial.write(ch);
+}
+
+boolean verifySpace() {
+  if (getch() != Sync_CRC_EOP) {
+    return false;
+  }
+  putch(Resp_STK_INSYNC);
+  return true;
+}     
+
+boolean isBinaryFile(File testfile){
+  // call this before any reading...
+  if (testfile.peek() == ':'){
+    return 0;
+  }
+  else
+    return 1;
+}
+  
      
