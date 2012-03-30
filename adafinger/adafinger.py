@@ -75,17 +75,17 @@ class adafinger(object):
         (len, reply) = self.getReply()
         if len >= FINGERPRINT_BADPACKET:
             return -1
-        if (len !=1) and (reply[0] != FINGERPRINT_ACKPACKET):
+        if (len !=1) and (reply[0] != chr(FINGERPRINT_ACKPACKET)):
             return -1
         return ord(reply[1])
 
     def image2Tz(self,slot=1):
-        imPacket = [FINGERPRINT_IMAGE2TZ,slot,]
+        imPacket = [FINGERPRINT_IMAGE2TZ,slot]
         self.writePacket(self.theAddress,FINGERPRINT_COMMANDPACKET, imPacket, 4)
         (len, reply) = self.getReply()
         if len >= FINGERPRINT_BADPACKET:
             return -1
-        if (len !=1) and (reply[0] != FINGERPRINT_ACKPACKET):
+        if (len !=1) and (reply[0] != chr(FINGERPRINT_ACKPACKET)):
             return -1
         return ord(reply[1])
 
@@ -93,9 +93,11 @@ class adafinger(object):
         spacket = [FINGERPRINT_HISPEEDSEARCH, 0x01,0x00,0x00,0x00,0xA3]
         self.writePacket(self.theAddress, FINGERPRINT_COMMANDPACKET,spacket,8)
         (len,reply) = self.getReply()
+ #       for x in reply:
+ #           print "%02X:" % ord(x)
         if len >= FINGERPRINT_BADPACKET:
             return -1
-        if (len !=1) and (reply[0] != FINGERPRINT_ACKPACKET):
+        if (len !=1) and (reply[0] != chr(FINGERPRINT_ACKPACKET)):
             return -1
         self.fingerID = ord(reply[2])<<8
         self.fingerID = self.fingerID | ord(reply[3])
