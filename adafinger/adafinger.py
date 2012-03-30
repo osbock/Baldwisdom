@@ -88,6 +88,25 @@ class adafinger(object):
         if (len !=1) and (reply[0] != chr(FINGERPRINT_ACKPACKET)):
             return -1
         return ord(reply[1])
+    def createModel(self):
+        cmPacket = [FINGERPRINT_REGMODEL]
+        self.writePacket(self.theAddress, FINGERPRINT_COMMANDPACKET, cmPacket, 3)
+        (len, reply) = self.getReply()
+        if len >= FINGERPRINT_BADPACKET:
+            return -1
+        if (len !=1) and (reply[0] != chr(FINGERPRINT_ACKPACKET)):
+            return -1
+        return ord(reply[1])
+    def storeModel(self,id):
+        stPacket = [FINGERPRINT_STORE, 0x01, id >>8, id & 0x0ff]
+        self.writePacket(self.theAddress, FINGERPRINT_COMMANDPACKET, stPacket, 6)
+        (len, reply) = self.getReply()
+        if len >= FINGERPRINT_BADPACKET:
+            return -1
+        if (len !=1) and (reply[0] != chr(FINGERPRINT_ACKPACKET)):
+            return -1
+        return ord(reply[1])
+                        
 
     def fingerFastSearch(self):
         spacket = [FINGERPRINT_HISPEEDSEARCH, 0x01,0x00,0x00,0x00,0xA3]
@@ -181,7 +200,11 @@ class adafinger(object):
                     returnpacket.append(reply[9+i])
 #                    print "%02X:" % ord(reply[9+i])
                 return (len, returnpacket)
-        # returns -1 on error, otherwise returns fingerprint ID #
+
+# High level functions including enrolling and scanning for fingerprints.
+# they can have console interactions, so you may wish to move them out into yout application code
+
+# GetFingerPrintID returns -1 on error, otherwise returns fingerprint ID #
     def getFingerPrintID(self):
             fprint = -1
             fprint = self.getImage()
@@ -197,8 +220,113 @@ class adafinger(object):
   #              print "failed to find finger"
                 return -1
             return self.fingerID
+    def getFingerPrintEnroll(self,id):
+        p= -1
+        print "Waiting for finger to enroll"
+        sys.stdout.flush()
+        while p != FINGERPRINT_OK:
+            p = self.getImage()
+            if p == FINGERPRINT_OK:
+                print "Image Taken"
+                break
+            if p == FINGERPRINT_NOFINGER:
+                print ".",
+            elif p == FINGERPRINT_PACKETRECIEVEERR:
+                print "Communications error"
+                break
+            elif p== FINGERPRINT_IMAGEFAIL:
+                print "Imaging Error"
+                break
 
-        
+        p = self.image2Tz()
+        if p == FINGERPRINT_OK:
+            print "Image Converted"
+        elif p == FINGERPRINT_IMAGEMESS:
+            print "image too messy"
+            return p
+        elif p == FINGERPRINT_PACKETRECIEVEERR:
+            print "Communications Error"
+            return p
+        elif p == FINGERPRINT_FEATUREFAIL:
+            print "could not find fingerprint features"
+            return p
+        elif p == FINGERPRINT_INVALIDIMAGE:
+            print "could not find fingerprint features"
+            return p
+        else:
+            print "unknown error"
+            return p
+
+        print "Remove Finger"
+        sys.stdout.flush()
+        time.sleep(2)
+        print "Place same finger again"
+        sys.stdout.flush()
+        p = -1
+        while p != FINGERPRINT_OK:
+           p = self.getImage()
+           if p == FINGERPRINT_OK:
+               print "Image Taken"
+               break
+           elif p == FINGERPRINT_NOFINGER:
+               print ".",
+           elif p == FINGERPRINT_PACKETRECEIVEERR:
+               print "Communications error"
+               break
+           elif p== FINGERPRINT_IMAGEFAIL:
+               print "Imaging Error"
+               break
+           else:
+               print "unknown Error"
+               break
+        p = self.image2Tz(2) # put it in slot 2 for comparison
+        if p == FINGERPRINT_OK:
+            print "Image Converted"
+        elif p == FINGERPRINT_IMAGEMESS:
+            print "image too messy"
+            return p
+        elif p == FINGERPRINT_PACKETRECIEVEERR:
+            print "Communications Error"
+            return p
+        elif p == FINGERPRINT_FEATUREFAIL:
+            print "could not find fingerprint features"
+            return p
+        elif p == FINGERPRINT_INVALIDIMAGE:
+            print "could not find fingerprint features"
+            return p
+        else:
+            print "unknown error"
+            return p
+        #OK -- Time to store
+        p = self.createModel()
+        if p == FINGERPRINT_OK:
+            print "Fingerprints Matched!"
+        elif p == FINGERPRINT_PACKETRECIEVEERR:
+            print "Communications error"
+            return p
+        elif p == FINGERPRINT_ENROLLMISMATCH:
+            print "Fingerprints did not match"
+            return p
+        else:
+            print "Unknown error enrolling Fingerprint"
+            return p
+        p = self.storeModel(id)
+        if p == FINGERPRINT_OK:
+            print "Stored"
+            return p
+        elif p == FINGERPRINT_PACKETRECIEVEERR:
+            print "Communications Error"
+            return p
+        elif p == FINGERPRINT_BADLOCATION:
+            print "Could not store in that location"
+            return p
+        elif p == FINGERPRINT_FLASHERR:
+            print "error writing to flash"
+            return p
+        else:
+            print "Unknown error"
+            return p
+       
 def main():
     import optparse, sys
     parser = optparse.OptionParser(
@@ -235,8 +363,9 @@ def main():
         print "no reader found"
         sys.exit(1)
     else:
-        print "reader found!"
-        if options.scan:
+        if options.enrollslot != -1:
+            finger.getFingerPrintEnroll(options.enrollslot)
+        elif options.scan:
             while True:
                 finger.getFingerPrintID()
                 if (finger.fingerID != -1) and(finger.fingerID != 65535):
