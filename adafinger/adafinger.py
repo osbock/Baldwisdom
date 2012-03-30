@@ -239,7 +239,7 @@ def main():
         if options.scan:
             while True:
                 finger.getFingerPrintID()
-                if finger.fingerID != -1:
+                if (finger.fingerID != -1) and(finger.fingerID != 65535):
                     print "Found ID ID: %d with confidence of %d" % (finger.fingerID, finger.confidence)
                     break
             sys.exit(0)
