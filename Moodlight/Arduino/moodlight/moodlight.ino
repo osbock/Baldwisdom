@@ -1,6 +1,7 @@
 #include "rainbow.h"
 #include "potcolor.h"
 #include "breathe.h"
+#include "cm1.h"
 #include "Adafruit_NeoPixel.h"
 // pin defines. Note potcolor.h defines the Potentiometer pin
 //left LED strip/matrix
@@ -16,7 +17,8 @@ Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(128,RIGHT, NEO_GRB + NEO_KHZ800);
 rainbow myRainbow;
 potcolor myPotcolor;
 breathe myBreathe;
-displayMode* modesList[] = {&myRainbow,&myPotcolor,&myBreathe};
+cm1 myCm1;
+displayMode* modesList[] = {&myRainbow,&myPotcolor,&myBreathe,&myCm1};
 #define NUMMODES sizeof(modesList)/sizeof(displayMode*)
 int mode = NUMMODES; // if mode is one greater than the actual number of modes, turn off display. start off off.
 
@@ -29,7 +31,7 @@ void setup() {
   strip1.setBrightness(50);
   show2();
   Serial.begin(115200);
-  for (int i =0; i < sizeof(modesList)/sizeof(displayMode*); i++)
+  for (int i =0; i < NUMMODES; i++)
   {
     Serial.print("Setting up mode: ");Serial.println(i);
     modesList[i]->setup();
